@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from "react";
 import formatCurrency from "../utils/util";
 import Fade from "react-reveal/Fade";
-
-export default class Cart extends Component {
+import { connect } from "react-redux";
+import { removeFromCart } from "../actions/cartActions";
+class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -137,3 +138,9 @@ export default class Cart extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  cartItems: state.cart.cartItems,
+});
+
+export default connect(mapStateToProps, { removeFromCart })(Cart);
