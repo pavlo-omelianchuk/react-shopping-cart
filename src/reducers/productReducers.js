@@ -7,7 +7,7 @@ import {
 export const productsReducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_PRODUCTS:
-      return { items: action.payload };
+      return { items: action.payload, filteredItems: action.payload };
     case FILTER_PRODUCTS_BY_SIZE:
       return {
         ...state,

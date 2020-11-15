@@ -21,18 +21,18 @@ export const filterProducts = (products, size) => async (dispatch) => {
       items:
         size === ""
           ? products
-          : products.filter((x) => x.availableSizes.indexOf(size)),
+          : products.filter((x) => x.availableSizes.indexOf(size) >= 0),
     },
   });
 };
 
 export const sortProducts = (filterProducts, sort) => async (dispatch) => {
   const sortedProducts = filterProducts.slice();
-  if (sort === "") {
-    sortProducts.sort((a, b) => (a._id > b._id ? 1 : -1));
+  if (sort === "latest") {
+    sortedProducts.sort((a, b) => (a._id > b._id ? 1 : -1));
   } else {
-    sortProducts.sort((a, b) =>
-      sort === "lowestprice"
+    sortedProducts.sort((a, b) =>
+      sort === "lowest"
         ? a.price > b.price
           ? 1
           : -1

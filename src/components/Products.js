@@ -17,7 +17,6 @@ class Products extends Component {
     };
   }
 
-
   openModal = (product) => {
     this.setState({ product: product });
   };
@@ -103,7 +102,7 @@ class Products extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  products: state.products.items,
+  products: state.products.filteredItems,
 });
 
 export default connect(mapStateToProps, { fetchProducts })(Products);
